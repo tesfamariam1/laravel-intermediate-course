@@ -1,7 +1,7 @@
 <script setup></script>
 
 <template>
-  <router-view />
+  <div>Index Page</div>
 </template>
 
 <style scoped></style>
