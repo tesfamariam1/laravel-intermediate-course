@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\TagController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 require 'auth.php';
@@ -24,6 +25,17 @@ Route::prefix('files')->group(function () {
 });
 
 // Route::get('users/{user}/posts', [PostController::class, 'userPosts']);
+
+// routes/api.php
+Route::middleware(['api.key'])->group(function () {
+    // Route::get('/chat-room', [ChatController::class, 'index']); // This is for testing
+
+    Route::get('/profile', function (Request $request) {
+        return [
+            'user' => 'I am user',
+        ];
+    });
+});
 
 Route::apiResource('users', UserController::class);
 // Tags CRUD
