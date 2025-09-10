@@ -14,10 +14,12 @@ const login = async () => {
   success.value = "";
   loading.value = true;
   try {
-    const response = await axios.post("/api/login", {
-      email: email.value,
-      password: password.value,
-    });
+    const response = await axios.post("/api/login",
+      {
+        email: email.value,
+        password: password.value,
+      },
+    );
     console.log(response.data.token, "response from login");
 
     localStorage.setItem("authToken", response.data.token);
