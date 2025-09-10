@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\FileUploadRequest;
 use App\Models\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -40,19 +41,19 @@ class FileUploadController extends Controller
         ]);
     }
 
-    public function uploadSingle(Request $request)
+    public function uploadSingle(FileUploadRequest $request)
     {
-        $validator = Validator::make($request->all(), [
-            'file' => 'required|file|max:10240', // Max 10MB
-        ]);
+        // $validator = Validator::make($request->all(), [
+        //     'file' => 'required|file|max:10240', // Max 10MB
+        // ]);
 
-        if ($validator->fails()) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Validation failed',
-                'errors' => $validator->errors()
-            ], 422);
-        }
+        // if ($validator->fails()) {
+        //     return response()->json([
+        //         'success' => false,
+        //         'message' => 'Validation failed',
+        //         'errors' => $validator->errors()
+        //     ], 422);
+        // }
 
         try {
             $file = $request->file('file');
